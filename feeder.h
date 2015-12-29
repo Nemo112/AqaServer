@@ -8,7 +8,7 @@
 
 
 void turnAround(){
-  for(int i=0;i<1000;i++){
+  for(int i=0;i<520;i++){
     digitalWrite(motorPin1, LOW);
     digitalWrite(motorPin2, HIGH);
     digitalWrite(motorPin3, HIGH);

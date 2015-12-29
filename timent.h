@@ -11,7 +11,6 @@
 #include <Udp.h>  
 #endif  
 
-unsigned long timecnt = 0;
 byte timeServer[] = {10, 0, 0, 4}; 
 //byte timeServer[] = {193, 79, 237, 14};
 unsigned int localPort = 31011;
@@ -45,6 +44,17 @@ void setDS3231time(byte second, byte minute, byte hour, byte dayOfWeek, byte day
     Wire.endTransmission();
 }
 
+void readDS3231MinutesHoures(byte *minute, byte *hour){
+    Wire.beginTransmission(DS3231_I2C_ADDRESS);
+    Wire.write(0); // set DS3231 register pointer to 00h
+    Wire.endTransmission();
+    Wire.requestFrom(DS3231_I2C_ADDRESS, 7);
+    // request seven bytes of data from DS3231 starting from register 00h
+    bcdToDec(Wire.read() & 0x7f); // seconds
+    *minute = bcdToDec(Wire.read());
+    *hour = bcdToDec(Wire.read() & 0x3f);
+}
+
 void readDS3231time(byte *second, byte *minute, byte *hour, byte *dayOfWeek, byte *dayOfMonth, byte *month, byte *year){
     Wire.beginTransmission(DS3231_I2C_ADDRESS);
     Wire.write(0); // set DS3231 register pointer to 00h
@@ -58,6 +68,55 @@ void readDS3231time(byte *second, byte *minute, byte *hour, byte *dayOfWeek, byt
     *dayOfMonth = bcdToDec(Wire.read());
     *month = bcdToDec(Wire.read());
     *year = bcdToDec(Wire.read());
+}
+
+void displayHttpTime(EthernetClient * client){
+    byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+    // retrieve data from DS3231
+    readDS3231time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
+    // send it to the serial monitor
+    client->print(hour, DEC);
+    // convert the byte variable to a decimal number when displayed
+    client->print(":");
+    if (minute<10){
+        client->print("0");
+    }
+    client->print(minute, DEC);
+    client->print(":");
+    if (second<10){
+        client->print("0");
+    }
+    client->print(second, DEC);
+    client->print(" ");
+    client->print(dayOfMonth, DEC);
+    client->print("/");
+    client->print(month, DEC);
+    client->print("/");
+    client->print(year, DEC);
+    client->print(" Day of week: ");
+    switch(dayOfWeek){
+        case 1:
+            client->println("Sunday");
+            break;
+        case 2:
+            client->println("Monday");
+            break;
+        case 3:
+            client->println("Tuesday");
+            break;
+        case 4:
+            client->println("Wednesday");
+            break;
+        case 5:
+            client->println("Thursday");
+            break;
+        case 6:
+            client->println("Friday");
+            break;
+        case 7:
+            client->println("Saturday");
+            break;
+    }
 }
 
 void displayTime(){
@@ -167,7 +226,6 @@ boolean setTime(){
     t2 -= seventyYears;
     t3 -= seventyYears;
     t4 -= seventyYears;
-    timecnt = t4;
     t4 -= (3 * 3600L);     // Notice the L for long calculations!!
     t4 += 1;               // adjust the delay(1000) at begin of loop!
     if (f4 > 0.4) t4++;    // adjust fractional part, see above

@@ -1,9 +1,9 @@
 #ifndef surf
 #define surf
-#define SWITCH_SUR 4
+#define SWITCH_SUR A0
 
 int getSurface(){
-  int buttonState = digitalRead(SWITCH_SUR);
+  int buttonState = analogRead(SWITCH_SUR);
   if (buttonState == HIGH)
     return true;
   else
