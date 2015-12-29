@@ -4,7 +4,7 @@
 
 int getSurface(){
   int buttonState = analogRead(SWITCH_SUR);
-  if (buttonState == HIGH)
+  if (buttonState > 0)
     return true;
   else
     return false;

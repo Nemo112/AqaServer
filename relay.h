@@ -4,17 +4,24 @@
 
 int relays_stats[RELAY_CNT];
 
-boolean switchRelay(int x){
+void switchRelay(int x){
   relays_stats[x-3] = (relays_stats[x-3] + 1) % 2;
-  digitalWrite(x, relays_stats[x+3]);
+  digitalWrite(x, relays_stats[x]);
 }
-boolean switchOn(int x){
-  digitalWrite(x, 1);
-  relays_stats[x-3] = 1;
+void switchSet(int x, int state){
+  relays_stats[x-3] = state;
 }
-boolean switchOff(int x){
-  digitalWrite(x,0);
-  relays_stats[x-3] = 0;
+void switchOn(int x){
+  if(relays_stats[x-3] != 1){
+   digitalWrite(x, 1);
+   relays_stats[x-3] = 1;    
+  }
+}
+void switchOff(int x){
+  if(relays_stats[x-3] != 0){
+    digitalWrite(x,0);
+    relays_stats[x-3] = 0;
+  }
 }
 int switchState(int x){
   return relays_stats[x-3];

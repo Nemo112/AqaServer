@@ -80,6 +80,16 @@ boolean setEETime(char * input){
   }
 }
 
+void checkTemp(){
+  if(tankTmpr > ((int)getTemp())){
+    switchOn(HEATER);   
+  }else{
+    switchOff(HEATER);  
+  }
+}
+
+byte minute; byte hour;
+  
 unsigned int loopCounter = 0;
 
 static byte mac[] = { 0xDA, 0xAD, 0x9C, 0xEF, 0xFE, 0xAD };
@@ -89,12 +99,27 @@ byte subnet[] = { 255, 255, 255, 0};
 
 EthernetServer server(9011);
 
+void setupTimes(){
+  readDS3231MinutesHoures(&minute,&hour);
+  unsigned int upper =  endt.h*60 + endt.m;
+  unsigned int lower =  wake.h*60 + wake.m;
+  if(lower < (hour*60+minute) && (hour*60+minute) < upper){
+    switchOn(LIGHTS);
+    switchOn(FILTER);
+  }else{
+    switchOff(LIGHTS);
+    switchOff(FILTER);
+  }
+  endt.done = true;
+  wake.done = true;
+}
+
 void setup() {
   Serial.begin(9600);
   //init eeprom constants
   readKonstVal();
   // surface sensors
-  //pinMode(SWITCH_SUR, INPUT_PULLUP);
+  pinMode(SWITCH_SUR, INPUT);
   // motor 
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT);
@@ -104,22 +129,56 @@ void setup() {
   Wire.begin();
   // Relays setup
   pinMode(LIGHTS, OUTPUT); 
-  switchOff(LIGHTS);
   pinMode(FILTER, OUTPUT); 
-  switchOff(FILTER);
   pinMode(HEATER, OUTPUT); 
-  switchOff(HEATER);
+  switchSet(LIGHTS,0);
+  switchSet(FILTER,0);
+  switchSet(HEATER,0);
+  // setting up whats needs to be up
+  setupTimes();
   // server settings
   Ethernet.begin(mac, ip);
   server.begin();
   Serial.println(Ethernet.localIP());
 }
-
+//flags
+boolean checktime = true;
 
 void loop() {
-  /*if (loopCounter % 60*60*1000 == 0 && loopCounter != 0){
+  // NTP update
+  readDS3231MinutesHoures(&minute,&hour);
+  if (minute == 0 && checktime == true){
     setTime();
+    checktime = false;
+  }else if (minute != 0 && checktime == false){
+    checktime = true;  
+  }
+  // lights sleep & wake
+  setupTimes();
+  /*if (minute == wake.m && hour == wake.h && wake.done == true){
+    switchOn(FILTER);
+    switchOn(LIGHTS);
+    wake.done = false;
+  }else if (minute != wake.m  && wake.done == false){
+    wake.done = true;
+  }
+  if (minute == endt.m && hour == endt.h && endt.done == true){
+    switchOff(FILTER);
+    switchOff(LIGHTS);
+    endt.done = false;
+  }else if (minute != endt.m  && endt.done == false){
+    endt.done = true;
   }*/
+  // feed time
+  if (minute == feedt.m && hour == feedt.h && feedt.done == true){
+    turnAround();
+    feedt.done = false;
+  }else if (minute != feedt.m  && feedt.done == false){
+    feedt.done = true;
+  }
+  // check temperature
+  checkTemp();
+  //
   EthernetClient client = server.available();
   if (client) {
     char combuf[BFS];
@@ -133,8 +192,10 @@ void loop() {
           Serial.println(combuf);
           if(msgcnt >= 2){
             if(combuf[0] == 'G'){ 
-              if(combuf[1] == 'N')
-                client.println(getTemp());
+              if(combuf[1] == 'Z')
+                client.println(getSurface());
+              if(combuf[1] == 'M')
+                client.println(tankTmpr);
               if(combuf[1] == 'T')
                 client.println(getTemp());
               if(combuf[1] == 'L')
@@ -179,17 +240,22 @@ void loop() {
                   setEETime(combuf);
             }
           }
+          if(combuf[0] == '\r' && msgcnt >= 1){ 
+            client.stop();
+          }
           msgcnt = 0;
         }else{    
           combuf[msgcnt] = c;
           msgcnt ++;
         }
+        checkTemp();
+        setupTimes();
       }
     }
     // give the web browser time to receive the data
     delay(1);
-    // close the connection:
-    client.stop();
+    if (client.available())
+      client.stop();
   }
   delay(1000);
   loopCounter ++;
