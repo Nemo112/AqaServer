@@ -194,44 +194,44 @@ void loop() {
             if(combuf[0] == 'G'){ 
               if(combuf[1] == 'Z')
                 client.println(getSurface());
-              if(combuf[1] == 'M')
+              else if(combuf[1] == 'M')
                 client.println(tankTmpr);
-              if(combuf[1] == 'T')
+              else if(combuf[1] == 'T')
                 client.println(getTemp());
-              if(combuf[1] == 'L')
+              else if(combuf[1] == 'L')
                 client.println(switchState(LIGHTS));
-              if(combuf[1] == 'F')
+              else if(combuf[1] == 'F')
                 client.println(switchState(FILTER));
-              if(combuf[1] == 'H')
+              else if(combuf[1] == 'H')
                 client.println(switchState(HEATER));
-              if(combuf[1] == 'N')
+              else if(combuf[1] == 'N')
                 displayHttpTime(&client);
-              if(combuf[1] == 'P')
+              else if(combuf[1] == 'P')
                 turnAround();
-              if(combuf[1] == 'W'){
+              else if(combuf[1] == 'W'){
                 client.print(wake.h);  
                 client.print(":");  
                 client.print(wake.m);  
                 client.print("\n");  
               }
-              if(combuf[1] == 'E'){
+              else if(combuf[1] == 'E'){
                 client.print(endt.h);  
                 client.print(":");  
                 client.print(endt.m);  
                 client.print("\n");  
               }
-              if(combuf[1] == 'F'){
+              else if(combuf[1] == 'F'){
                 client.print(feedt.h);  
                 client.print(":");  
                 client.print(feedt.m);  
                 client.print("\n");  
               }
-              if(combuf[1] == 'S'){
+              else if(combuf[1] == 'S'){
                 client.print(tankTmpr);  
                 client.print("\n"); 
               }
             }
-            if(combuf[0] == 'S'){
+            else if(combuf[0] == 'S'){
                 if(combuf[1] == 'N')
                   setTime();
                 else if(combuf[1] == 'T' && msgcnt >= 5)
