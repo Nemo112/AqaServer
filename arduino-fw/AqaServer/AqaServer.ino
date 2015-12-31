@@ -240,9 +240,7 @@ void loop() {
                   setEETime(combuf);
             }
           }
-          if(combuf[0] == '\r' && msgcnt >= 1){ 
-            client.stop();
-          }
+          client.stop();
           msgcnt = 0;
         }else{    
           combuf[msgcnt] = c;
