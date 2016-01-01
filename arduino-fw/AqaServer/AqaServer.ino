@@ -1,3 +1,23 @@
+/*
+ * 
+ * GZ - get water surface switch 
+ * GM - get tank temperature which is suppose to be in water
+ * GT - get real temperature in tank
+ * GL - get light relay state
+ * GF - get filter relay state
+ * GH - get heater relay state
+ * GN - get time of system
+ * GP - get feeder to turn around and give food to fish
+ * GW - get wake time for lights
+ * GE - get time for shuting down the lights
+ * GF - get time for feeding
+ * 
+ * SE - set time for sleep time in SE hh mm
+ * SW - set time for wake up in SW hh mm
+ * SF - set time for feeding in SF hh mm
+ * ST - set wish temperature in tank in ST nn
+ * 
+ */
 extern "C"{
   #include "relay.h"
   #include "surf.h"
@@ -226,10 +246,10 @@ void loop() {
                 client.print(feedt.m);  
                 client.print("\n");  
               }
-              else if(combuf[1] == 'S'){
+              /*else if(combuf[1] == 'S'){
                 client.print(tankTmpr);  
                 client.print("\n"); 
-              }
+              }*/
             }
             else if(combuf[0] == 'S'){
                 if(combuf[1] == 'N')
