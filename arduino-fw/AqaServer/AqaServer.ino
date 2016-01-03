@@ -110,8 +110,6 @@ void checkTemp(){
 
 byte minute; byte hour;
   
-unsigned int loopCounter = 0;
-
 static byte mac[] = { 0xDA, 0xAD, 0x9C, 0xEF, 0xFE, 0xAD };
 static byte ip[] = { 10, 0, 0, 173 };
 byte gateway[] = { 10, 0, 0, 138 };
@@ -151,8 +149,8 @@ void setup() {
   pinMode(LIGHTS, OUTPUT); 
   pinMode(FILTER, OUTPUT); 
   pinMode(HEATER, OUTPUT); 
-  switchSet(LIGHTS,0);
-  switchSet(FILTER,0);
+  switchSet(LIGHTS,1);
+  switchSet(FILTER,1);
   switchSet(HEATER,0);
   // setting up whats needs to be up
   setupTimes();
@@ -166,13 +164,13 @@ boolean checktime = true;
 
 void loop() {
   // NTP update
-  readDS3231MinutesHoures(&minute,&hour);
+  /*readDS3231MinutesHoures(&minute,&hour);
   if (minute == 0 && checktime == true){
     setTime();
     checktime = false;
   }else if (minute != 0 && checktime == false){
     checktime = true;  
-  }
+  }*/
   // lights sleep & wake
   setupTimes();
   /*if (minute == wake.m && hour == wake.h && wake.done == true){
@@ -252,9 +250,10 @@ void loop() {
               }*/
             }
             else if(combuf[0] == 'S'){
-                if(combuf[1] == 'N')
+                if(combuf[1] == 'N'){
                   setTime();
-                else if(combuf[1] == 'T' && msgcnt >= 5)
+                  displayHttpTime(&client);
+                }else if(combuf[1] == 'T' && msgcnt >= 5)
                   setTempr(combuf);
                 else if(msgcnt >= 8)
                   setEETime(combuf);
@@ -266,16 +265,13 @@ void loop() {
           combuf[msgcnt] = c;
           msgcnt ++;
         }
-        checkTemp();
-        setupTimes();
       }
     }
     // give the web browser time to receive the data
-    delay(1);
+    delay(100);
     if (client.available())
       client.stop();
   }
   delay(1000);
-  loopCounter ++;
 }
 
