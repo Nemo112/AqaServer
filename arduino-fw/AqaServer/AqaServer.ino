@@ -101,10 +101,11 @@ boolean setEETime(char * input){
 }
 
 void checkTemp(){
-  if(tankTmpr > ((int)getTemp())){
-    switchOn(HEATER);   
+  if(abs(((int)getTemp())-tankTmpr) < 2 ){
+//if(tankTmpr > ((int)getTemp())){
+    switchOff(HEATER);   
   }else{
-    switchOff(HEATER);  
+    switchOn(HEATER);  
   }
 }
 
