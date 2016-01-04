@@ -101,11 +101,10 @@ boolean setEETime(char * input){
 }
 
 void checkTemp(){
-  if(abs(((int)getTemp())-tankTmpr) < 2 ){
-//if(tankTmpr > ((int)getTemp())){
-    switchOff(HEATER);   
+  if(tankTmpr > ((int)getTemp())){
+    switchOn(HEATER);
   }else{
-    switchOn(HEATER);  
+    switchOff(HEATER);  
   }
 }
 
@@ -161,12 +160,13 @@ void setup() {
   Serial.println(Ethernet.localIP());
 }
 //flags
-boolean checktime = true;
+//boolean checktime = true;
+boolean checktemp = true;
 
 void loop() {
   // NTP update
-  /*readDS3231MinutesHoures(&minute,&hour);
-  if (minute == 0 && checktime == true){
+  readDS3231MinutesHoures(&minute,&hour);
+  /*if (minute == 0 && checktime == true){
     setTime();
     checktime = false;
   }else if (minute != 0 && checktime == false){
@@ -196,7 +196,12 @@ void loop() {
     feedt.done = true;
   }
   // check temperature
-  checkTemp();
+  if(minute % 4 == 0 && checktemp){
+    checkTemp();
+    checktemp = false;
+  }else if (minute % 4 != 0 && !checktemp){
+    checktemp = true;  
+  }
   //
   EthernetClient client = server.available();
   if (client) {
