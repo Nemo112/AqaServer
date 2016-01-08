@@ -6,6 +6,9 @@
 #define motorPin4  9 
 #define delayTime 10
 
+
+void initFeed();
+
 void turnAround();
 
 #endif

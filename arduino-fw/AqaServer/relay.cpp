@@ -6,6 +6,15 @@ int relays_stats[RELAY_CNT];
 //===================================================================================
 //===================================================================================
 
+void initRelays(){
+  pinMode(LIGHTS, OUTPUT); 
+  pinMode(FILTER, OUTPUT); 
+  pinMode(HEATER, OUTPUT); 
+  switchSet(LIGHTS,1);
+  switchSet(FILTER,1);
+  switchSet(HEATER,0); 
+}
+
 void switchRelay(int x){
   relays_stats[x-3] = (relays_stats[x-3] + 1) % 2;
   digitalWrite(x, relays_stats[x]);

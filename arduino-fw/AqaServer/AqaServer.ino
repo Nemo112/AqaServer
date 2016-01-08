@@ -28,9 +28,6 @@
 //};
 #include <EEPROM.h>
 #include <Ethernet.h>
-#define LIGHTS 3
-#define FILTER 4
-#define HEATER 5
 #define BFS    10
 
 //SW hh mm
@@ -51,19 +48,11 @@ void setup() {
   // surface sensors
   initSurface();
   // motor 
-  pinMode(motorPin1, OUTPUT);
-  pinMode(motorPin2, OUTPUT);
-  pinMode(motorPin3, OUTPUT);
-  pinMode(motorPin4, OUTPUT);
+  initFeed();
   // Wire for time begin
   initTiment();
   // Relays setup
-  pinMode(LIGHTS, OUTPUT); 
-  pinMode(FILTER, OUTPUT); 
-  pinMode(HEATER, OUTPUT); 
-  switchSet(LIGHTS,1);
-  switchSet(FILTER,1);
-  switchSet(HEATER,0);
+  initRelays();
   // setting up whats needs to be up
   setupTimes(LIGHTS,FILTER);
   // server settings

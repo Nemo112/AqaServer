@@ -4,6 +4,14 @@
 //===================================================================================
 //===================================================================================
 
+
+void initFeed(){
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  pinMode(motorPin3, OUTPUT);
+  pinMode(motorPin4, OUTPUT);  
+}
+
 void turnAround(){
   for(int i=0;i<520;i++){
     digitalWrite(motorPin1, LOW);
