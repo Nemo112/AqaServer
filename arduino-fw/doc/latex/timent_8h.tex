@@ -1,0 +1,249 @@
+\hypertarget{timent_8h}{\section{timent.\+h File Reference}
+\label{timent_8h}\index{timent.\+h@{timent.\+h}}
+}
+{\ttfamily \#include $<$S\+P\+I.\+h$>$}\\*
+{\ttfamily \#include $<$Ethernet.\+h$>$}\\*
+Include dependency graph for timent.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{timent_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{timent_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{timent_8h_ac1b08325eae558a954161be4af0f81e1}{init\+Timent} ()
+\begin{DoxyCompactList}\small\item\em Init of R\+T\+C. \end{DoxyCompactList}\item 
+byte \hyperlink{timent_8h_a825d19190ddbe72ed1536d48a6a23229}{dec\+To\+Bcd} (byte val)
+\begin{DoxyCompactList}\small\item\em Decadic format to binary coded decimal. \end{DoxyCompactList}\item 
+byte \hyperlink{timent_8h_a212db7b7699776a934657711a6a77d9b}{bcd\+To\+Dec} (byte val)
+\begin{DoxyCompactList}\small\item\em Binary coded decimal to decadic format. \end{DoxyCompactList}\item 
+void \hyperlink{timent_8h_a04e328e25f7ec25f880cfa590b0d2cc0}{set\+D\+S3231time} (byte second, byte \hyperlink{timers_8cpp_a0f100646613882af0415f3d97bd67875}{minute}, byte \hyperlink{timers_8cpp_aafa4b28cd4cce6ab8fbe430b55b647ad}{hour}, byte day\+Of\+Week, byte day\+Of\+Month, byte month, byte year)
+\begin{DoxyCompactList}\small\item\em Setter for R\+T\+C. \end{DoxyCompactList}\item 
+void \hyperlink{timent_8h_a2dc0bfb9c1fa2b144186ae2933d589ea}{read\+D\+S3231\+Minutes\+Houres} (byte $\ast$\hyperlink{timers_8cpp_a0f100646613882af0415f3d97bd67875}{minute}, byte $\ast$\hyperlink{timers_8cpp_aafa4b28cd4cce6ab8fbe430b55b647ad}{hour})
+\item 
+void \hyperlink{timent_8h_a2fb4d2d1f9d3145dcbe0c66f7152b48b}{read\+D\+S3231time} (byte $\ast$second, byte $\ast$\hyperlink{timers_8cpp_a0f100646613882af0415f3d97bd67875}{minute}, byte $\ast$\hyperlink{timers_8cpp_aafa4b28cd4cce6ab8fbe430b55b647ad}{hour}, byte $\ast$day\+Of\+Week, byte $\ast$day\+Of\+Month, byte $\ast$month, byte $\ast$year)
+\item 
+void \hyperlink{timent_8h_ad33063e0b5afbf35c57332e16881c0e7}{display\+Http\+Time} (Ethernet\+Client $\ast$client)
+\begin{DoxyCompactList}\small\item\em Response for ethernet connection for time values. \end{DoxyCompactList}\item 
+void \hyperlink{timent_8h_ab2f29739b10ddbedf9da6febe9c75917}{display\+Time} ()
+\begin{DoxyCompactList}\small\item\em Displays time on the console. \end{DoxyCompactList}\item 
+unsigned long \hyperlink{timent_8h_a12e5fa8d1663729d683386268d6fb233}{send\+N\+T\+Ppacket} (byte $\ast$address)
+\begin{DoxyCompactList}\small\item\em Sender of N\+T\+P request to N\+T\+P server given by address. \end{DoxyCompactList}\item 
+boolean \hyperlink{timent_8h_af20803fe4cebd4e2fc6a8062c32e865f}{set\+Time} ()
+\begin{DoxyCompactList}\small\item\em Set time by N\+T\+P server to R\+T\+C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{timent_8h_a212db7b7699776a934657711a6a77d9b}{\index{timent.\+h@{timent.\+h}!bcd\+To\+Dec@{bcd\+To\+Dec}}
+\index{bcd\+To\+Dec@{bcd\+To\+Dec}!timent.\+h@{timent.\+h}}
+\subsubsection[{bcd\+To\+Dec}]{\setlength{\rightskip}{0pt plus 5cm}byte bcd\+To\+Dec (
+\begin{DoxyParamCaption}
+\item[{byte}]{val}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_a212db7b7699776a934657711a6a77d9b}
+
+
+Binary coded decimal to decadic format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Binary coded number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Decimal value. 
+\end{DoxyReturn}
+
+
+Definition at line 32 of file timent.\+cpp.
+
+\hypertarget{timent_8h_a825d19190ddbe72ed1536d48a6a23229}{\index{timent.\+h@{timent.\+h}!dec\+To\+Bcd@{dec\+To\+Bcd}}
+\index{dec\+To\+Bcd@{dec\+To\+Bcd}!timent.\+h@{timent.\+h}}
+\subsubsection[{dec\+To\+Bcd}]{\setlength{\rightskip}{0pt plus 5cm}byte dec\+To\+Bcd (
+\begin{DoxyParamCaption}
+\item[{byte}]{val}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_a825d19190ddbe72ed1536d48a6a23229}
+
+
+Decadic format to binary coded decimal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Decadic number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Binary coded decimal value. 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file timent.\+cpp.
+
+\hypertarget{timent_8h_ad33063e0b5afbf35c57332e16881c0e7}{\index{timent.\+h@{timent.\+h}!display\+Http\+Time@{display\+Http\+Time}}
+\index{display\+Http\+Time@{display\+Http\+Time}!timent.\+h@{timent.\+h}}
+\subsubsection[{display\+Http\+Time}]{\setlength{\rightskip}{0pt plus 5cm}void display\+Http\+Time (
+\begin{DoxyParamCaption}
+\item[{Ethernet\+Client $\ast$}]{client}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_ad33063e0b5afbf35c57332e16881c0e7}
+
+
+Response for ethernet connection for time values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & Ethernet client to send the message to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 75 of file timent.\+cpp.
+
+\hypertarget{timent_8h_ab2f29739b10ddbedf9da6febe9c75917}{\index{timent.\+h@{timent.\+h}!display\+Time@{display\+Time}}
+\index{display\+Time@{display\+Time}!timent.\+h@{timent.\+h}}
+\subsubsection[{display\+Time}]{\setlength{\rightskip}{0pt plus 5cm}void display\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_ab2f29739b10ddbedf9da6febe9c75917}
+
+
+Displays time on the console. 
+
+
+
+Definition at line 124 of file timent.\+cpp.
+
+\hypertarget{timent_8h_ac1b08325eae558a954161be4af0f81e1}{\index{timent.\+h@{timent.\+h}!init\+Timent@{init\+Timent}}
+\index{init\+Timent@{init\+Timent}!timent.\+h@{timent.\+h}}
+\subsubsection[{init\+Timent}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Timent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_ac1b08325eae558a954161be4af0f81e1}
+
+
+Init of R\+T\+C. 
+
+
+
+Definition at line 23 of file timent.\+cpp.
+
+\hypertarget{timent_8h_a2dc0bfb9c1fa2b144186ae2933d589ea}{\index{timent.\+h@{timent.\+h}!read\+D\+S3231\+Minutes\+Houres@{read\+D\+S3231\+Minutes\+Houres}}
+\index{read\+D\+S3231\+Minutes\+Houres@{read\+D\+S3231\+Minutes\+Houres}!timent.\+h@{timent.\+h}}
+\subsubsection[{read\+D\+S3231\+Minutes\+Houres}]{\setlength{\rightskip}{0pt plus 5cm}void read\+D\+S3231\+Minutes\+Houres (
+\begin{DoxyParamCaption}
+\item[{byte $\ast$}]{minute, }
+\item[{byte $\ast$}]{hour}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_a2dc0bfb9c1fa2b144186ae2933d589ea}
+
+
+Definition at line 49 of file timent.\+cpp.
+
+\hypertarget{timent_8h_a2fb4d2d1f9d3145dcbe0c66f7152b48b}{\index{timent.\+h@{timent.\+h}!read\+D\+S3231time@{read\+D\+S3231time}}
+\index{read\+D\+S3231time@{read\+D\+S3231time}!timent.\+h@{timent.\+h}}
+\subsubsection[{read\+D\+S3231time}]{\setlength{\rightskip}{0pt plus 5cm}void read\+D\+S3231time (
+\begin{DoxyParamCaption}
+\item[{byte $\ast$}]{second, }
+\item[{byte $\ast$}]{minute, }
+\item[{byte $\ast$}]{hour, }
+\item[{byte $\ast$}]{day\+Of\+Week, }
+\item[{byte $\ast$}]{day\+Of\+Month, }
+\item[{byte $\ast$}]{month, }
+\item[{byte $\ast$}]{year}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_a2fb4d2d1f9d3145dcbe0c66f7152b48b}
+
+
+Definition at line 60 of file timent.\+cpp.
+
+\hypertarget{timent_8h_a12e5fa8d1663729d683386268d6fb233}{\index{timent.\+h@{timent.\+h}!send\+N\+T\+Ppacket@{send\+N\+T\+Ppacket}}
+\index{send\+N\+T\+Ppacket@{send\+N\+T\+Ppacket}!timent.\+h@{timent.\+h}}
+\subsubsection[{send\+N\+T\+Ppacket}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long send\+N\+T\+Ppacket (
+\begin{DoxyParamCaption}
+\item[{byte $\ast$}]{address}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_a12e5fa8d1663729d683386268d6fb233}
+
+
+Sender of N\+T\+P request to N\+T\+P server given by address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & Address of N\+T\+P server. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N\+T\+P time stamp. 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file timent.\+cpp.
+
+\hypertarget{timent_8h_a04e328e25f7ec25f880cfa590b0d2cc0}{\index{timent.\+h@{timent.\+h}!set\+D\+S3231time@{set\+D\+S3231time}}
+\index{set\+D\+S3231time@{set\+D\+S3231time}!timent.\+h@{timent.\+h}}
+\subsubsection[{set\+D\+S3231time}]{\setlength{\rightskip}{0pt plus 5cm}void set\+D\+S3231time (
+\begin{DoxyParamCaption}
+\item[{byte}]{second, }
+\item[{byte}]{minute, }
+\item[{byte}]{hour, }
+\item[{byte}]{day\+Of\+Week, }
+\item[{byte}]{day\+Of\+Month, }
+\item[{byte}]{month, }
+\item[{byte}]{year}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_a04e328e25f7ec25f880cfa590b0d2cc0}
+
+
+Setter for R\+T\+C. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em second} & Second of time. \\
+\hline
+{\em minute} & Minute of time. \\
+\hline
+{\em hour} & Hours of time \\
+\hline
+{\em day\+Of\+Week} & Day of the week. \\
+\hline
+{\em day\+Of\+Month} & Day of the month. \\
+\hline
+{\em month} & Current month. \\
+\hline
+{\em year} & Current year. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file timent.\+cpp.
+
+\hypertarget{timent_8h_af20803fe4cebd4e2fc6a8062c32e865f}{\index{timent.\+h@{timent.\+h}!set\+Time@{set\+Time}}
+\index{set\+Time@{set\+Time}!timent.\+h@{timent.\+h}}
+\subsubsection[{set\+Time}]{\setlength{\rightskip}{0pt plus 5cm}boolean set\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timent_8h_af20803fe4cebd4e2fc6a8062c32e865f}
+
+
+Set time by N\+T\+P server to R\+T\+C. 
+
+\begin{DoxyReturn}{Returns}
+Status of time setting. 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file timent.\+cpp.
+

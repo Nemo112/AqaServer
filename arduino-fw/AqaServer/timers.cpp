@@ -6,12 +6,13 @@
 #include "temp.h"
 #include "relay.h"
 
-Tmr wake;
-Tmr endt;
-Tmr feedt;
-int tankTmpr;
+Tmr wake; /*!< \brief Aquarium wake time. */
+Tmr endt; /*!< \brief Aquarium sleep time. */
+Tmr feedt; /*!< \brief Aquarium feed time. */
+int tankTmpr;  /*!< \brief Aquarium wish temperature. */
 
-byte minute; byte hour;
+byte minute;  /*!< \brief Current aquarium minute time. */
+byte hour; /*!< \brief Current aquarium minute time. */
 
 boolean checktemp = true;
 

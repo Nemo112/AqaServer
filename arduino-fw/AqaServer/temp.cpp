@@ -2,7 +2,7 @@
 #include <OneWire.h>
 #include <Arduino.h>
 
-int DS18S20_Pin = 2;
+int DS18S20_Pin = 2; /*!< \brief Pin of RTC. */
 OneWire ds(DS18S20_Pin);
 
 //===================================================================================

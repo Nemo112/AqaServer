@@ -10,8 +10,8 @@
 #include <Udp.h>  
 #endif  
 
-byte timeServer[] = {10, 0, 0, 4}; 
-unsigned int localPort = 31011;
+byte timeServer[] = {10, 0, 0, 4}; /*!< \brief Remote NTP server. */
+unsigned int localPort = 31011; /*!< \brief Local TCP connection port. */
 
 const int NTP_PACKET_SIZE= 48;
 byte pb[NTP_PACKET_SIZE];
@@ -25,12 +25,12 @@ void initTiment(){
 }
 
 byte decToBcd(byte val){
-    return( (val/10*16) + (val%10) );
+  return( (val/10*16) + (val%10) );
 }
 
 // Convert binary coded decimal to normal decimal numbers
 byte bcdToDec(byte val){
-    return( (val/16*10) + (val%16) );
+  return( (val/16*10) + (val%16) );
 }
 void setDS3231time(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year){
     // sets time and date data to DS3231

@@ -1,0 +1,372 @@
+\hypertarget{timers_8cpp}{\section{timers.\+cpp File Reference}
+\label{timers_8cpp}\index{timers.\+cpp@{timers.\+cpp}}
+}
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$Arduino.\+h$>$}\\*
+{\ttfamily \#include $<$E\+E\+P\+R\+O\+M.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}timent.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}feeder.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}temp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}relay.\+h\char`\"{}}\\*
+Include dependency graph for timers.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timers_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{timers_8cpp_a9bfe70d722721ac4cd1e9dafc0ac5f17}{set\+Timers} ()
+\begin{DoxyCompactList}\small\item\em Read R\+T\+C minute \& hour values. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a8f1e7673ec5bbe382596c8c5b1c2c938}{check\+Temp\+Fr\+Min} (int heater)
+\begin{DoxyCompactList}\small\item\em Check temperature in intervals. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a096176edca3be6491fe26a8f967d0aee}{feed\+Fish} ()
+\begin{DoxyCompactList}\small\item\em Feeds fish in aquarium. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_afd5128221c620ce341dc1254cf33b65d}{read\+Konst\+Val} ()
+\begin{DoxyCompactList}\small\item\em Read E\+E\+P\+R\+O\+M values and set time time values for aqarium. \end{DoxyCompactList}\item 
+bool \hyperlink{timers_8cpp_a962973b24f69e6a65d8b1597de2a1fb3}{set\+Tempr} (char $\ast$input)
+\begin{DoxyCompactList}\small\item\em Set wish temperature of aquarium. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a50ebb5a7c99715d386c2515a7abd21e4}{check\+Temp} (int heater)
+\begin{DoxyCompactList}\small\item\em Check temperature. \end{DoxyCompactList}\item 
+boolean \hyperlink{timers_8cpp_abbca993699ee6790390c692cdabf6fc2}{set\+E\+E\+Time} (char $\ast$input)
+\begin{DoxyCompactList}\small\item\em Setup of time in E\+E\+P\+R\+O\+M. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{timers_8cpp_af49a30de967c5809446d449953a964e7}{get\+Wish\+Temp} ()
+\begin{DoxyCompactList}\small\item\em Getter for wish temperature in tank. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a48bf981461a55d8b282446ab81097da7}{setup\+Times} (int lights, int filter)
+\begin{DoxyCompactList}\small\item\em Seting up pins by current time. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a47ef6f0ac340d5be5d1c5d6ac4ee9885}{display\+Http\+Wake\+Time} (Ethernet\+Client $\ast$client)
+\begin{DoxyCompactList}\small\item\em Response for ethernet connection for wake time values. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a58ca77cf346143757c1f620e4cf280bc}{display\+Http\+Sleep\+Time} (Ethernet\+Client $\ast$client)
+\begin{DoxyCompactList}\small\item\em Response for ethernet connection for sleep time values. \end{DoxyCompactList}\item 
+void \hyperlink{timers_8cpp_a41c8b0d051898bad34f5d56d8df46215}{display\+Http\+Feed\+Time} (Ethernet\+Client $\ast$client)
+\begin{DoxyCompactList}\small\item\em Response for ethernet connection for feep time values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_tmr}{Tmr} \hyperlink{timers_8cpp_a061651429990c6c3a0443a7e56b21d89}{wake}
+\begin{DoxyCompactList}\small\item\em Aquarium wake time. \end{DoxyCompactList}\item 
+\hyperlink{struct_tmr}{Tmr} \hyperlink{timers_8cpp_a32db4ce90d7eb46b35f914dbde71cf5a}{endt}
+\begin{DoxyCompactList}\small\item\em Aquarium sleep time. \end{DoxyCompactList}\item 
+\hyperlink{struct_tmr}{Tmr} \hyperlink{timers_8cpp_a700359103e1dc784699671479b9153d2}{feedt}
+\begin{DoxyCompactList}\small\item\em Aquarium feed time. \end{DoxyCompactList}\item 
+int \hyperlink{timers_8cpp_a731d99156a30db9569dd34f137a4ff34}{tank\+Tmpr}
+\begin{DoxyCompactList}\small\item\em Aquarium wish temperature. \end{DoxyCompactList}\item 
+byte \hyperlink{timers_8cpp_a0f100646613882af0415f3d97bd67875}{minute}
+\begin{DoxyCompactList}\small\item\em Current aquarium minute time. \end{DoxyCompactList}\item 
+byte \hyperlink{timers_8cpp_aafa4b28cd4cce6ab8fbe430b55b647ad}{hour}
+\begin{DoxyCompactList}\small\item\em Current aquarium minute time. \end{DoxyCompactList}\item 
+boolean \hyperlink{timers_8cpp_a3e95f44a744553aaaca80a81b06c4bf2}{checktemp} = true
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{timers_8cpp_a50ebb5a7c99715d386c2515a7abd21e4}{\index{timers.\+cpp@{timers.\+cpp}!check\+Temp@{check\+Temp}}
+\index{check\+Temp@{check\+Temp}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{check\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}check\+Temp (
+\begin{DoxyParamCaption}
+\item[{int}]{heater}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a50ebb5a7c99715d386c2515a7abd21e4}
+
+
+Check temperature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heater} & Heater pin number. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 79 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a8f1e7673ec5bbe382596c8c5b1c2c938}{\index{timers.\+cpp@{timers.\+cpp}!check\+Temp\+Fr\+Min@{check\+Temp\+Fr\+Min}}
+\index{check\+Temp\+Fr\+Min@{check\+Temp\+Fr\+Min}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{check\+Temp\+Fr\+Min}]{\setlength{\rightskip}{0pt plus 5cm}check\+Temp\+Fr\+Min (
+\begin{DoxyParamCaption}
+\item[{int}]{heater}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a8f1e7673ec5bbe382596c8c5b1c2c938}
+
+
+Check temperature in intervals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em heater} & Heater pin number. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 26 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a41c8b0d051898bad34f5d56d8df46215}{\index{timers.\+cpp@{timers.\+cpp}!display\+Http\+Feed\+Time@{display\+Http\+Feed\+Time}}
+\index{display\+Http\+Feed\+Time@{display\+Http\+Feed\+Time}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{display\+Http\+Feed\+Time}]{\setlength{\rightskip}{0pt plus 5cm}display\+Http\+Feed\+Time (
+\begin{DoxyParamCaption}
+\item[{Ethernet\+Client $\ast$}]{client}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a41c8b0d051898bad34f5d56d8df46215}
+
+
+Response for ethernet connection for feep time values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & Ethernet client to send the message to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 151 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a58ca77cf346143757c1f620e4cf280bc}{\index{timers.\+cpp@{timers.\+cpp}!display\+Http\+Sleep\+Time@{display\+Http\+Sleep\+Time}}
+\index{display\+Http\+Sleep\+Time@{display\+Http\+Sleep\+Time}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{display\+Http\+Sleep\+Time}]{\setlength{\rightskip}{0pt plus 5cm}display\+Http\+Sleep\+Time (
+\begin{DoxyParamCaption}
+\item[{Ethernet\+Client $\ast$}]{client}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a58ca77cf346143757c1f620e4cf280bc}
+
+
+Response for ethernet connection for sleep time values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & Ethernet client to send the message to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 144 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a47ef6f0ac340d5be5d1c5d6ac4ee9885}{\index{timers.\+cpp@{timers.\+cpp}!display\+Http\+Wake\+Time@{display\+Http\+Wake\+Time}}
+\index{display\+Http\+Wake\+Time@{display\+Http\+Wake\+Time}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{display\+Http\+Wake\+Time}]{\setlength{\rightskip}{0pt plus 5cm}display\+Http\+Wake\+Time (
+\begin{DoxyParamCaption}
+\item[{Ethernet\+Client $\ast$}]{client}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a47ef6f0ac340d5be5d1c5d6ac4ee9885}
+
+
+Response for ethernet connection for wake time values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client} & Ethernet client to send the message to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a096176edca3be6491fe26a8f967d0aee}{\index{timers.\+cpp@{timers.\+cpp}!feed\+Fish@{feed\+Fish}}
+\index{feed\+Fish@{feed\+Fish}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{feed\+Fish}]{\setlength{\rightskip}{0pt plus 5cm}feed\+Fish (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a096176edca3be6491fe26a8f967d0aee}
+
+
+Feeds fish in aquarium. 
+
+
+
+Definition at line 35 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_af49a30de967c5809446d449953a964e7}{\index{timers.\+cpp@{timers.\+cpp}!get\+Wish\+Temp@{get\+Wish\+Temp}}
+\index{get\+Wish\+Temp@{get\+Wish\+Temp}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{get\+Wish\+Temp}]{\setlength{\rightskip}{0pt plus 5cm}get\+Wish\+Temp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_af49a30de967c5809446d449953a964e7}
+
+
+Getter for wish temperature in tank. 
+
+\begin{DoxyReturn}{Returns}
+Wish temperature. 
+\end{DoxyReturn}
+
+
+Definition at line 119 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_afd5128221c620ce341dc1254cf33b65d}{\index{timers.\+cpp@{timers.\+cpp}!read\+Konst\+Val@{read\+Konst\+Val}}
+\index{read\+Konst\+Val@{read\+Konst\+Val}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{read\+Konst\+Val}]{\setlength{\rightskip}{0pt plus 5cm}read\+Konst\+Val (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_afd5128221c620ce341dc1254cf33b65d}
+
+
+Read E\+E\+P\+R\+O\+M values and set time time values for aqarium. 
+
+
+
+Definition at line 44 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_abbca993699ee6790390c692cdabf6fc2}{\index{timers.\+cpp@{timers.\+cpp}!set\+E\+E\+Time@{set\+E\+E\+Time}}
+\index{set\+E\+E\+Time@{set\+E\+E\+Time}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{set\+E\+E\+Time}]{\setlength{\rightskip}{0pt plus 5cm}set\+E\+E\+Time (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{input}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_abbca993699ee6790390c692cdabf6fc2}
+
+
+Setup of time in E\+E\+P\+R\+O\+M. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Time to store in E\+E\+P\+R\+O\+M. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Statues of stored values. 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a962973b24f69e6a65d8b1597de2a1fb3}{\index{timers.\+cpp@{timers.\+cpp}!set\+Tempr@{set\+Tempr}}
+\index{set\+Tempr@{set\+Tempr}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{set\+Tempr}]{\setlength{\rightskip}{0pt plus 5cm}set\+Tempr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{input}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a962973b24f69e6a65d8b1597de2a1fb3}
+
+
+Set wish temperature of aquarium. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Input of readed chars \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Statues of written data. 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a9bfe70d722721ac4cd1e9dafc0ac5f17}{\index{timers.\+cpp@{timers.\+cpp}!set\+Timers@{set\+Timers}}
+\index{set\+Timers@{set\+Timers}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{set\+Timers}]{\setlength{\rightskip}{0pt plus 5cm}set\+Timers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a9bfe70d722721ac4cd1e9dafc0ac5f17}
+
+
+Read R\+T\+C minute \& hour values. 
+
+
+
+Definition at line 22 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a48bf981461a55d8b282446ab81097da7}{\index{timers.\+cpp@{timers.\+cpp}!setup\+Times@{setup\+Times}}
+\index{setup\+Times@{setup\+Times}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{setup\+Times}]{\setlength{\rightskip}{0pt plus 5cm}setup\+Times (
+\begin{DoxyParamCaption}
+\item[{int}]{lights, }
+\item[{int}]{filter}
+\end{DoxyParamCaption}
+)}}\label{timers_8cpp_a48bf981461a55d8b282446ab81097da7}
+
+
+Seting up pins by current time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lights} & Lights pin value. \\
+\hline
+{\em filter} & Filter pin value. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 123 of file timers.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{timers_8cpp_a3e95f44a744553aaaca80a81b06c4bf2}{\index{timers.\+cpp@{timers.\+cpp}!checktemp@{checktemp}}
+\index{checktemp@{checktemp}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{checktemp}]{\setlength{\rightskip}{0pt plus 5cm}boolean checktemp = true}}\label{timers_8cpp_a3e95f44a744553aaaca80a81b06c4bf2}
+
+
+Definition at line 17 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a32db4ce90d7eb46b35f914dbde71cf5a}{\index{timers.\+cpp@{timers.\+cpp}!endt@{endt}}
+\index{endt@{endt}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{endt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tmr} endt}}\label{timers_8cpp_a32db4ce90d7eb46b35f914dbde71cf5a}
+
+
+Aquarium sleep time. 
+
+
+
+Definition at line 10 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a700359103e1dc784699671479b9153d2}{\index{timers.\+cpp@{timers.\+cpp}!feedt@{feedt}}
+\index{feedt@{feedt}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{feedt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tmr} feedt}}\label{timers_8cpp_a700359103e1dc784699671479b9153d2}
+
+
+Aquarium feed time. 
+
+
+
+Definition at line 11 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_aafa4b28cd4cce6ab8fbe430b55b647ad}{\index{timers.\+cpp@{timers.\+cpp}!hour@{hour}}
+\index{hour@{hour}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{hour}]{\setlength{\rightskip}{0pt plus 5cm}byte hour}}\label{timers_8cpp_aafa4b28cd4cce6ab8fbe430b55b647ad}
+
+
+Current aquarium minute time. 
+
+
+
+Definition at line 15 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a0f100646613882af0415f3d97bd67875}{\index{timers.\+cpp@{timers.\+cpp}!minute@{minute}}
+\index{minute@{minute}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{minute}]{\setlength{\rightskip}{0pt plus 5cm}byte minute}}\label{timers_8cpp_a0f100646613882af0415f3d97bd67875}
+
+
+Current aquarium minute time. 
+
+
+
+Definition at line 14 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a731d99156a30db9569dd34f137a4ff34}{\index{timers.\+cpp@{timers.\+cpp}!tank\+Tmpr@{tank\+Tmpr}}
+\index{tank\+Tmpr@{tank\+Tmpr}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{tank\+Tmpr}]{\setlength{\rightskip}{0pt plus 5cm}int tank\+Tmpr}}\label{timers_8cpp_a731d99156a30db9569dd34f137a4ff34}
+
+
+Aquarium wish temperature. 
+
+
+
+Definition at line 12 of file timers.\+cpp.
+
+\hypertarget{timers_8cpp_a061651429990c6c3a0443a7e56b21d89}{\index{timers.\+cpp@{timers.\+cpp}!wake@{wake}}
+\index{wake@{wake}!timers.\+cpp@{timers.\+cpp}}
+\subsubsection[{wake}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tmr} wake}}\label{timers_8cpp_a061651429990c6c3a0443a7e56b21d89}
+
+
+Aquarium wake time. 
+
+
+
+Definition at line 9 of file timers.\+cpp.
+

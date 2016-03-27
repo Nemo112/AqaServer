@@ -1,0 +1,122 @@
+\hypertarget{_aqa_server_8ino}{\section{Aqa\+Server.\+ino File Reference}
+\label{_aqa_server_8ino}\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+}
+{\ttfamily \#include \char`\"{}relay.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}surf.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}temp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}timent.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}feeder.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$E\+E\+P\+R\+O\+M.\+h$>$}\\*
+{\ttfamily \#include $<$Ethernet.\+h$>$}\\*
+Include dependency graph for Aqa\+Server.\+ino\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_aqa_server_8ino__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_aqa_server_8ino_a1b83ef6dcb797171631472c31018beef}{B\+F\+S}~10
+\begin{DoxyCompactList}\small\item\em Size of input buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Ethernet\+Server \hyperlink{_aqa_server_8ino_a0d0f1af61ef5b9c8c9ac1ab61f99dd04}{server} (9011)
+\begin{DoxyCompactList}\small\item\em Server instance for port 9011. \end{DoxyCompactList}\item 
+void \hyperlink{_aqa_server_8ino_a1d04139db3a5ad5713ecbd14d97da879}{setup} ()
+\begin{DoxyCompactList}\small\item\em Setting up all the inputs/outputs. \end{DoxyCompactList}\item 
+void \hyperlink{_aqa_server_8ino_a11debc633c690ca19cb27df5f971d73d}{loop} ()
+\begin{DoxyCompactList}\small\item\em Looping the Arduino. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+byte \hyperlink{_aqa_server_8ino_a50d8813b28b1fc9d3695b4c352fc1f73}{gateway} \mbox{[}$\,$\mbox{]} = \{ 10, 0, 0, 138 \}
+\begin{DoxyCompactList}\small\item\em I\+P adress of gateway. \end{DoxyCompactList}\item 
+byte \hyperlink{_aqa_server_8ino_a5785acd9d4432010fb73dc54d352ccc3}{subnet} \mbox{[}$\,$\mbox{]} = \{ 255, 255, 255, 0\}
+\begin{DoxyCompactList}\small\item\em Network mask adress of Arduino. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_aqa_server_8ino_a1b83ef6dcb797171631472c31018beef}{\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}!B\+F\+S@{B\+F\+S}}
+\index{B\+F\+S@{B\+F\+S}!Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+\subsubsection[{B\+F\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+F\+S~10}}\label{_aqa_server_8ino_a1b83ef6dcb797171631472c31018beef}
+
+
+Size of input buffer. 
+
+
+
+Definition at line 31 of file Aqa\+Server.\+ino.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_aqa_server_8ino_a11debc633c690ca19cb27df5f971d73d}{\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}!loop@{loop}}
+\index{loop@{loop}!Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+\subsubsection[{loop}]{\setlength{\rightskip}{0pt plus 5cm}loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_aqa_server_8ino_a11debc633c690ca19cb27df5f971d73d}
+
+
+Looping the Arduino. 
+
+
+
+Definition at line 73 of file Aqa\+Server.\+ino.
+
+\hypertarget{_aqa_server_8ino_a0d0f1af61ef5b9c8c9ac1ab61f99dd04}{\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}!server@{server}}
+\index{server@{server}!Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+\subsubsection[{server}]{\setlength{\rightskip}{0pt plus 5cm}Ethernet\+Server server (
+\begin{DoxyParamCaption}
+\item[{9011}]{}
+\end{DoxyParamCaption}
+)}}\label{_aqa_server_8ino_a0d0f1af61ef5b9c8c9ac1ab61f99dd04}
+
+
+Server instance for port 9011. 
+
+\hypertarget{_aqa_server_8ino_a1d04139db3a5ad5713ecbd14d97da879}{\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}!setup@{setup}}
+\index{setup@{setup}!Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}setup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_aqa_server_8ino_a1d04139db3a5ad5713ecbd14d97da879}
+
+
+Setting up all the inputs/outputs. 
+
+
+
+Definition at line 48 of file Aqa\+Server.\+ino.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{_aqa_server_8ino_a50d8813b28b1fc9d3695b4c352fc1f73}{\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}!gateway@{gateway}}
+\index{gateway@{gateway}!Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+\subsubsection[{gateway}]{\setlength{\rightskip}{0pt plus 5cm}byte gateway\mbox{[}$\,$\mbox{]} = \{ 10, 0, 0, 138 \}}}\label{_aqa_server_8ino_a50d8813b28b1fc9d3695b4c352fc1f73}
+
+
+I\+P adress of gateway. 
+
+
+
+Definition at line 39 of file Aqa\+Server.\+ino.
+
+\hypertarget{_aqa_server_8ino_a5785acd9d4432010fb73dc54d352ccc3}{\index{Aqa\+Server.\+ino@{Aqa\+Server.\+ino}!subnet@{subnet}}
+\index{subnet@{subnet}!Aqa\+Server.\+ino@{Aqa\+Server.\+ino}}
+\subsubsection[{subnet}]{\setlength{\rightskip}{0pt plus 5cm}byte subnet\mbox{[}$\,$\mbox{]} = \{ 255, 255, 255, 0\}}}\label{_aqa_server_8ino_a5785acd9d4432010fb73dc54d352ccc3}
+
+
+Network mask adress of Arduino. 
+
+
+
+Definition at line 40 of file Aqa\+Server.\+ino.
+

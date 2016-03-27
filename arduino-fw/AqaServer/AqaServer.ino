@@ -24,23 +24,27 @@
   #include "temp.h"
   #include "timent.h"
   #include "feeder.h"
-  #include "timers.h" // obsahovalo EEPROM práci, ale nefunguje správně include
+  #include "timers.h"
 //};
 #include <EEPROM.h>
 #include <Ethernet.h>
-#define BFS    10
+#define BFS    10 /*!< \brief Size of input buffer */
 
 //SW hh mm
 //SE hh mm
 
   
-static byte mac[] = { 0xDA, 0xAD, 0x9C, 0xEF, 0xFE, 0xAD };
-static byte ip[] = { 10, 0, 0, 173 };
-byte gateway[] = { 10, 0, 0, 138 };
-byte subnet[] = { 255, 255, 255, 0};
+static byte mac[] = { 0xDA, 0xAD, 0x9C, 0xEF, 0xFE, 0xAD };  /*!< \brief Mac adress of Arduino */
+static byte ip[] = { 10, 0, 0, 173 }; /*!< \brief IP adress of Arduino */
+byte gateway[] = { 10, 0, 0, 138 }; /*!< \brief IP adress of gateway */
+byte subnet[] = { 255, 255, 255, 0}; /*!< \brief Network mask adress of Arduino */
 
-EthernetServer server(9011);
+EthernetServer server(9011); /*!< \brief Server instance for port 9011 */
 
+/*!
+ * \fn setup()
+ * \brief Setting up all the inputs/outputs 
+ */
 void setup() {
   Serial.begin(9600);
   //init eeprom constants
@@ -60,10 +64,12 @@ void setup() {
   server.begin();
   Serial.println(Ethernet.localIP());
 }
-//flags
-//boolean checktime = true;
 
 
+/*!
+ * \fn loop()
+ * \brief Looping the Arduino 
+ */
 void loop() {
   setTimers();
   // lights sleep & wake

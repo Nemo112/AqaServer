@@ -1,0 +1,170 @@
+\hypertarget{relay_8cpp}{\section{relay.\+cpp File Reference}
+\label{relay_8cpp}\index{relay.\+cpp@{relay.\+cpp}}
+}
+{\ttfamily \#include \char`\"{}relay.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$Arduino.\+h$>$}\\*
+Include dependency graph for relay.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{relay_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{relay_8cpp_a77d2d1fc9580fc4e47c0b47bc8f78752}{init\+Relays} ()
+\begin{DoxyCompactList}\small\item\em Relay initiation. \end{DoxyCompactList}\item 
+void \hyperlink{relay_8cpp_a02140e5c577d206c5ee42415032e3b57}{switch\+Relay} (int x)
+\begin{DoxyCompactList}\small\item\em Switch relay given by x to different state. \end{DoxyCompactList}\item 
+void \hyperlink{relay_8cpp_a7764566d1e0c4cd31cf200e00d2f4843}{switch\+Set} (int x, int state)
+\begin{DoxyCompactList}\small\item\em Set the realy state by given x. \end{DoxyCompactList}\item 
+void \hyperlink{relay_8cpp_aa237259c6c5f5cc60a2dbcdb62961346}{switch\+On} (int x)
+\begin{DoxyCompactList}\small\item\em Switch off relay state by the given x. \end{DoxyCompactList}\item 
+void \hyperlink{relay_8cpp_a2ee42df8fba1ea7c0a86e77f94ad6680}{switch\+Off} (int x)
+\begin{DoxyCompactList}\small\item\em Switch off relay state by the given x. \end{DoxyCompactList}\item 
+int \hyperlink{relay_8cpp_aebbe632e173506016c4586de2af372e0}{switch\+State} (int x)
+\begin{DoxyCompactList}\small\item\em Getter for relay state by the given x. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{relay_8cpp_a31f225c55d9a4421ae5cf5a48bc084b6}{relays\+\_\+stats} \mbox{[}\hyperlink{relay_8h_a1a6cf8977361352646bc8ec84b4466b7}{R\+E\+L\+A\+Y\+\_\+\+C\+N\+T}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Relay status array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{relay_8cpp_a77d2d1fc9580fc4e47c0b47bc8f78752}{\index{relay.\+cpp@{relay.\+cpp}!init\+Relays@{init\+Relays}}
+\index{init\+Relays@{init\+Relays}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{init\+Relays}]{\setlength{\rightskip}{0pt plus 5cm}init\+Relays (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{relay_8cpp_a77d2d1fc9580fc4e47c0b47bc8f78752}
+
+
+Relay initiation. 
+
+
+
+Definition at line 9 of file relay.\+cpp.
+
+\hypertarget{relay_8cpp_a2ee42df8fba1ea7c0a86e77f94ad6680}{\index{relay.\+cpp@{relay.\+cpp}!switch\+Off@{switch\+Off}}
+\index{switch\+Off@{switch\+Off}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{switch\+Off}]{\setlength{\rightskip}{0pt plus 5cm}switch\+Off (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}\label{relay_8cpp_a2ee42df8fba1ea7c0a86e77f94ad6680}
+
+
+Switch off relay state by the given x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Number of relay. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 32 of file relay.\+cpp.
+
+\hypertarget{relay_8cpp_aa237259c6c5f5cc60a2dbcdb62961346}{\index{relay.\+cpp@{relay.\+cpp}!switch\+On@{switch\+On}}
+\index{switch\+On@{switch\+On}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{switch\+On}]{\setlength{\rightskip}{0pt plus 5cm}switch\+On (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}\label{relay_8cpp_aa237259c6c5f5cc60a2dbcdb62961346}
+
+
+Switch off relay state by the given x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Number of relay. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 26 of file relay.\+cpp.
+
+\hypertarget{relay_8cpp_a02140e5c577d206c5ee42415032e3b57}{\index{relay.\+cpp@{relay.\+cpp}!switch\+Relay@{switch\+Relay}}
+\index{switch\+Relay@{switch\+Relay}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{switch\+Relay}]{\setlength{\rightskip}{0pt plus 5cm}switch\+Relay (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}\label{relay_8cpp_a02140e5c577d206c5ee42415032e3b57}
+
+
+Switch relay given by x to different state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Number of relay \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file relay.\+cpp.
+
+\hypertarget{relay_8cpp_a7764566d1e0c4cd31cf200e00d2f4843}{\index{relay.\+cpp@{relay.\+cpp}!switch\+Set@{switch\+Set}}
+\index{switch\+Set@{switch\+Set}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{switch\+Set}]{\setlength{\rightskip}{0pt plus 5cm}switch\+Set (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+)}}\label{relay_8cpp_a7764566d1e0c4cd31cf200e00d2f4843}
+
+
+Set the realy state by given x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Number of relay. \\
+\hline
+{\em state} & New state of relay. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file relay.\+cpp.
+
+\hypertarget{relay_8cpp_aebbe632e173506016c4586de2af372e0}{\index{relay.\+cpp@{relay.\+cpp}!switch\+State@{switch\+State}}
+\index{switch\+State@{switch\+State}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{switch\+State}]{\setlength{\rightskip}{0pt plus 5cm}switch\+State (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}}\label{relay_8cpp_aebbe632e173506016c4586de2af372e0}
+
+
+Getter for relay state by the given x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Number of relay. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+State of relay. 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file relay.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{relay_8cpp_a31f225c55d9a4421ae5cf5a48bc084b6}{\index{relay.\+cpp@{relay.\+cpp}!relays\+\_\+stats@{relays\+\_\+stats}}
+\index{relays\+\_\+stats@{relays\+\_\+stats}!relay.\+cpp@{relay.\+cpp}}
+\subsubsection[{relays\+\_\+stats}]{\setlength{\rightskip}{0pt plus 5cm}int relays\+\_\+stats\mbox{[}{\bf R\+E\+L\+A\+Y\+\_\+\+C\+N\+T}\mbox{]}}}\label{relay_8cpp_a31f225c55d9a4421ae5cf5a48bc084b6}
+
+
+Relay status array. 
+
+
+
+Definition at line 4 of file relay.\+cpp.
+

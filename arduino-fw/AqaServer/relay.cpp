@@ -1,7 +1,7 @@
 #include "relay.h"
 #include <Arduino.h>
 
-int relays_stats[RELAY_CNT];
+int relays_stats[RELAY_CNT]; /*!< \brief Relay status array */
 
 //===================================================================================
 //===================================================================================
