@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from __future__ import print_function
 
 import socket
 
@@ -9,5 +10,4 @@ s.connect((HOST, PORT))
 s.sendall('GZ\r\n')
 data = s.recv(10)
 s.close()
-print 'Received'
-print data
+print('Level:' + str(data),end='')

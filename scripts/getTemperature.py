@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import print_function
 import socket
 
 HOST = '10.0.0.173'    # The remote host
@@ -9,5 +9,4 @@ s.connect((HOST, PORT))
 s.sendall('GT\r\n')
 data = s.recv(10)
 s.close()
-print 'Received'
-print data
+print('Temperature:' + str(data),end='')
