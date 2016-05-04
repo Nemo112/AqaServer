@@ -25,9 +25,13 @@
 \author{Martin Beránek}
 \maketitle
 
+\newpage
+
 \tableofcontents
 \listoffigures
-\listoftables
+%\listoftables
+
+\newpage
 
 \section{Úvod}
 
@@ -225,6 +229,18 @@ int getSurface(){
 
 \subsection{Relé}
 
+Pro spínání součástí, které už jsou v akváriu, je použito relé se čtyřmi \ttt{GPIO} vstupy. Při nastavení na 1 se relé sepne. Pro udržení stavu je uchováváno minulé nastavení jednotlivých relé v poli.
+
+Ukázka přepínání:
+
+\begin{verbatim}
+void switchRelay(int x){
+  relays_stats[x-3] = (relays_stats[x-3] + 1) % 2;
+  digitalWrite(x, relays_stats[x]);
+}
+\end{verbatim}
+
+\ttt{GPIO} pole relé je souvislé, takže stačí jen použít adresu v poli $+3$ pro získání \ttt{GPIO} čísla.
 
 \section{Komunikace s \ttt{CACTI}}
 
@@ -247,7 +263,6 @@ print('Temperature:' + str(data),end='')
 
 Výsledný graf jasně ukazuje, že teplota kolísá mezi dvěma stupni. Kolísání způsobuje otevřené okno na noc, které vodu ochladí a vytápění vždy teplotu postupně dorovná. K datu psaní této práce vypadá graf takto:
 
-
 \begin{figure}[H]
   \centering
     \includegraphics[width=1\textwidth]{graph.png}
@@ -257,6 +272,8 @@ Výsledný graf jasně ukazuje, že teplota kolísá mezi dvěma stupni. Kolís�
 
 
 \section{Závěr}
+
+Akvárium pracuje dle zadání. Velice složité je vyrovnat se s prostředím, ve kterém pracuje. Automatizace některých procesů, jako je krmení, kontrola hladiny, se tak usnadnili a je možné přes server dostávat jejich stav pravidelně třeba pomocí emailu. Jedním z omezení je samotné vybrané \ttt{Arduino UNO}, které má poměrně málo \ttt{GPIO} portů. Z toho důvodu není osazen jeden vstup na relé desce. Jako další možné rozšíření může být měření \ttt{Ph}.
 
 \bibliographystyle{csn690}
 \bibliography{literatura}
