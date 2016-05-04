@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+\providecommand{\biburl}[1]{\url{#1}}
+\providecommand{\urlprefix}{Dostupn{\' e} z: }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\biburl{#2}}
+
+\bibitem{dscd}
+Electrodragon.com: DS18B20. [cit. 2016-04-15].
+\urlprefix\biburl{http://www.electrodragon.com/w/DS18B20}
+
+\end{thebibliography}

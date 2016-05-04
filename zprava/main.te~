@@ -1,0 +1,156 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,czech]{babel}
+\usepackage{makeidx}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{amsfonts}
+\usepackage{mdwlist}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listingsutf8}
+\usepackage{cite}
+\usepackage{mdframed}
+
+
+
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+\begin{document}
+\title{IoT Akvárium}
+\author{Martin Beránek}
+\maketitle
+
+%\tableofcontents
+%\listoffigures
+%\listoftables
+
+\section{Úvod}
+
+Semestrální úloha má za cíl vytvořit ovladatelné akvárium, které bude schopné postarat se o rybičky. Mezi základní vlastnosti\label{vlastn}, které je nutné spravovat, je:
+
+\begin{itemize}
+	\item Krmení,
+	\item Rozsvědcení světla a zhasínání,
+	\item Regulace vyhřívání,
+	\item Kontrola výšky hladiny.
+\end{itemize}
+
+Údaje o akváriu je nutné uchovávat pro statistiky. Pro potřeby upozornění je nutné neustále kontrolovat stav hladiny. Na základě toho je stanovena jednoduchá architektura obsahující server, který sbírá informace a logický obvod akvária tvořený platformou \texttt{Arduino}.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=1\textwidth]{net.png}
+  \caption{Architektura}
+  \label{char:arch}
+\end{figure}
+
+Pro vytváření grafů přímo na serveru slouží aplikace \texttt{Cacti}. Ta pomocí polleru spouští skript, který opakově otvírá \texttt{TCP} spojení na \texttt{Arduino} a zjisťuje současný stav. Na základě toho vytváří pomocí \texttt{RRDTool} graf.
+
+\section{Popis součástek}
+
+Na základě definovaných vlastností (\ref{vlastn}) byly vybrány následující součástky na platformu \ttt{Arduino}:
+
+\begin{description}
+	\item[Krokový motor] -- pro otáčení bubínku s krmením pro rybičky.
+	\item[Relé] -- pro spínání již vestavěného vytápění, osvětlení a filtru.
+	\item[Teploměř] -- pro měření teploty vody v akváriu.
+	\item[RTC] -- (\uv{Real-time clock}) pro reálný čas.
+	\item[Bójka jako spínač hladiny] -- v případě, že v akváriu klesá hladina vody, sepne se bójka a \ttt{Arduino} uloží hodnotu o problému.
+	\item[Ethernet shield] -- pro komunikaci se serverem pomocí \ttt{TCP} komunikace.
+\end{description}
+
+Vzhledem k tomu, že otáčení bubínku s krmením pro rybičky nevyžaduje nějakou větší sílu, je použit jednoduchý krokový motor \ttt{28BYJ-48}. Ten je připevněn na bubínek a je řízen driverem \ttt{ULN2003}. 
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.7\textwidth]{krmeni.png}
+  \caption{Diagram bubínku s krmením}
+  \label{char:bub}
+\end{figure}
+
+Pro spínání aktivních součástí akvária, které v něm už jsou zabudované, slouží relé. Relé jsou připojena na napájení ze sítě. Spínané součásti jsou: osvětlení, vyhřívání a filtr.
+
+Teploměr musí být vodotěsný. V této práci je použita teplotní sonda s čidlem \ttt{DS18B20}. Ta je ponořena v akváriu na místě, kde je velký proud vody, aby rychle reagovala na změny teploty.
+
+\ttt{Arduino} neobsahuje žádný modul reálného času. Kvůli nestabilnímu krystalu není ani možné měřit přesné časové intervaly. Na základě toho je připojen k \ttt{Arduinu} obvod \ttt{RTC} s obvodem \ttt{DS3231}.
+
+\section{Schéma}
+
+Na základě výběru součástek je vytvořeno schéma celé zapojení obvodu:
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=1\textwidth]{schema_bb.png}
+  \caption{Schéma zapojení součástek}
+  \label{char:scbb}
+\end{figure}
+
+\section{Aplikace}
+
+\section{Komunikace}
+
+Komunikace probíhá pomocí \ttt{TCP/IP} komunikace. \ttt{Arduino} naslouchá na na pevně zadané \ttt{IP} adrese. Na základě příkazů dlouhých několik bytů aplikace na \ttt{Arduinu} vytvoří zprávu a odešle jí v rámci komunikace. Příkazy, které \ttt{Arduino} zná jsou v následujícím seznamu:
+
+\begin{verbatim}
+GZ - vrátí stav spínače hladiny
+GM - vrátí teplotu, která má být v akváriu
+GT - vrátí reálnou teplotu v akváriu
+GL - vrátí stav relé obsluhující svétlo
+GF - vrátí stav relé obsluhující filtr
+GH - vrátí stav relé obsluhující vytápění
+GN - vrátí reálný čas Arduina
+GP - otočí bubínkem s krmením
+GW - vrátí čas, kdy má Arduino zapnout světla v akváriu
+GE - vrátí čas, kdy má Arduino vypnout světla v akváriu
+GK - vrátí čas, kdy má Arduino nakrmit rybičky
+
+SE hh mm - nastaví čas, kdy má Arduino vypnout světla v akváriu
+SW hh mm - nastaví čas, kdy má Arduino zapnout světla v akváriu
+SF hh mm - nastaví čas, kdy má Arduino nakrmit rybičky
+ST nn - nastaví teplotu v akváriu, které ma Arduino udržovat
+SN -- nastaví čas pomocí NTP serveru
+\end{verbatim}
+
+V případě, že \ttt{Arduino} nemá nastavený správný čas, vrací příkaz \ttt{GN} samé nuly. Pomocí příkazu \ttt{SN} \ttt{Arduino} zavolá \ttt{NTP} server a nastaví si čas podle času na \ttt{NTP}. Výstup nastaveného času může vypadat takto:
+
+\begin{verbatim}
+Trying 10.0.0.173...
+Connected to 10.0.0.173.
+Escape character is '^]'.
+SN
+8:36:50 4/5/16 Day of week: Wednesday
+Connection closed by foreign host.
+\end{verbatim}
+
+\section{Načasování}
+
+Všechny časovače pracují se strukturou obsahující binární proměnnou, které hlídá, aby v intervalu nedošlo k vypnutí nebo zapnutí vícekrát. 
+
+\begin{verbatim}
+struct Tmr{
+  byte h;
+  byte m;
+  byte done;
+};
+\end{verbatim}
+
+Časovač pracuje pouze s hodinou a minutou. V případě přepnutí je nastavena i proměnná \ttt{done}. K jejímu navrácení do původní podoby musí uběhnout časový interval zvolené minuty.
+
+\begin{verbatim}
+void feedFish(){
+  if (minute == feedt.m && hour == feedt.h && feedt.done == true){
+    turnAround();
+    feedt.done = false;
+  }else if (minute != feedt.m  && feedt.done == false){
+    feedt.done = true;
+  }
+}
+\end{verbatim}
+
+
+\end{document}

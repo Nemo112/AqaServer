@@ -1,0 +1,13 @@
+\select@language {czech}
+\contentsline {section}{\numberline {1}\IeC {\'U}vod}{1}
+\contentsline {section}{\numberline {2}Popis sou\IeC {\v c}\IeC {\'a}stek}{2}
+\contentsline {section}{\numberline {3}Sch\IeC {\'e}ma}{3}
+\contentsline {section}{\numberline {4}Aplikace}{4}
+\contentsline {section}{\numberline {5}Komunikace}{4}
+\contentsline {section}{\numberline {6}Na\IeC {\v c}asov\IeC {\'a}n\IeC {\'\i }}{5}
+\contentsline {section}{\numberline {7}\IeC {\v C}ten\IeC {\'\i } senzor\IeC {\r u}}{5}
+\contentsline {subsection}{\numberline {7.1}Teplota}{5}
+\contentsline {subsection}{\numberline {7.2}Sp\IeC {\'\i }nac\IeC {\'\i } plov\IeC {\'a}k}{6}
+\contentsline {subsection}{\numberline {7.3}Rel\IeC {\'e}}{7}
+\contentsline {section}{\numberline {8}Komunikace s \texttt {CACTI}}{7}
+\contentsline {section}{\numberline {9}Z\IeC {\'a}v\IeC {\v e}r}{8}
