@@ -10,4 +10,4 @@ It's suppose to manage:
 
 ## Scheme
 
-<img src="https://raw.githubusercontent.com/Nemo112/AqaServer/master/schema/schema_bb.png" alt="Scheme" style="width: 600px;"/>
+<img src="https://raw.githubusercontent.com/beranm14/AqaServer/master/schema/schema_bb.png" alt="Scheme" style="width: 600px;"/>
